@@ -2,6 +2,6 @@ import app from './app'
 import { config } from './config/env'
 import colors from 'colors'
 
-app.listen(()=>{
-    console.log(colors.green(`Server running on port'${config.port}`))
+app.listen(config.port,()=>{
+    console.log(colors.green(`Server running on port http://localhost:${config.port}`))
 })
