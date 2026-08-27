@@ -1,24 +1,24 @@
 import express from 'express'
 import cors from 'cors'
 import helmet from 'helmet'
-import fileRoutes from "@/modules/file/file.routes";
-import { errorMiddleware } from "@/middlewares/error.middleware";
+import fileRoutes from '@/models/file/file.routes'
+import { errorMiddleware } from '@/middlewares/error.middleware'
 
-const app = express()
+const app = express();
 
-app.use(helmet())
-app.use(cors())
-app.use(express.json())
+app.use(helmet());
+app.use(cors());
+app.use(express.json());
 
-
-app.get("/", (_, res) => {
-  res.json({
+app.get('/', (_req, res) => {
+  res.status(200).json({
     success: true,
-    message: "File Storage API працює",
+    message: 'File Storage API Running',
   });
 });
 
-app.use('/files',fileRoutes)
-app.use(errorMiddleware)
+app.use('/files', fileRoutes);
+
+app.use(errorMiddleware);
 
 export default app;
