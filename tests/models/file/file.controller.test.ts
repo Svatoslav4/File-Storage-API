@@ -1,7 +1,7 @@
 import fileController from '@/models/file/file.controller';
 import fileService from '@/models/file/file.service';
 
-jest.mock('@/modules/file/file.service');
+jest.mock('@/models/file/file.service');
 
 describe('file.controller', () => {
   const createRes = () => {

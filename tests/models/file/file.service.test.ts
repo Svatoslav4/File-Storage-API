@@ -2,7 +2,7 @@ import fileService from '@/models/file/file.service';
 import fileRepository from '@/models/file/file.repository';
 import storageService from '@/services/storage.service';
 
-jest.mock('@/modules/file/file.repository');
+jest.mock('@/models/file/file.repository');
 jest.mock('@/services/storage.service');
 
 describe('file.service', () => {
