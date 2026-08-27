@@ -2,11 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import fileService from "./file.service";
 
 class FileController {
-  async upload(
-    req: Request,
-    res: Response,
-    next: NextFunction
-  ) {
+  async upload(req: Request,res: Response,next: NextFunction) {
     try {
       if (!req.file) {
         return res.status(400).json({
@@ -26,11 +22,7 @@ class FileController {
     }
   }
 
-  async getAll(
-    req: Request,
-    res: Response,
-    next: NextFunction
-  ) {
+  async getAll(req: Request,res: Response,next: NextFunction) {
     try {
       const files = await fileService.getAllFiles();
 
@@ -43,11 +35,7 @@ class FileController {
     }
   }
 
-  async getById(
-    req: Request,
-    res: Response,
-    next: NextFunction
-  ) {
+  async getById(req: Request,res: Response,next: NextFunction) {
     try {
       const { id } = req.params;
 
@@ -76,11 +64,7 @@ class FileController {
     }
   }
 
-  async delete(
-    req: Request,
-    res: Response,
-    next: NextFunction
-  ) {
+  async delete(req: Request,res: Response,next: NextFunction) {
     try {
       const { id } = req.params;
 
