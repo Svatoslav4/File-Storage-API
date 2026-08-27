@@ -15,7 +15,7 @@ class FileController {
         });
       }
 
-      const file = await fileService.uploadFile(req.file);
+      const file = await fileService.uploadFile(req.file, req.user?.id);
 
       return res.status(201).json({
         success: true,

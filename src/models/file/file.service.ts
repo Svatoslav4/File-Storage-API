@@ -2,7 +2,8 @@ import fileRepository from "./file.repository";
 import storageService from "@/services/storage.service";
 
 class FileService {
-  async uploadFile(file: Express.Multer.File) {
+  async uploadFile(file: Express.Multer.File, userId?: string) {
+    void userId;
     const uploadedFile = await storageService.upload(file);
 
     const createdFile = await fileRepository.create({

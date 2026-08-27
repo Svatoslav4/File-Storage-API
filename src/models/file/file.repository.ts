@@ -1,14 +1,7 @@
 import {prisma} from "@/config/prisma";
 
 class FileRepository {
-  async create(data: {
-    filename: string;
-    originalName: string;
-    mimeType: string;
-    size: number;
-    url: string;
-    publicId: string;
-  }) {
+  async create(data: {filename: string;originalName: string;mimeType: string;size: number;url: string;publicId: string;}) {
     return prisma.file.create({
       data,
     });
