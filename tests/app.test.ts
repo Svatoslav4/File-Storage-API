@@ -12,4 +12,11 @@ describe('app', () => {
       message: 'File Storage API Running',
     });
   });
+
+  it('serves Swagger UI', async () => {
+    const response = await request(app).get('/api-docs/');
+
+    expect(response.status).toBe(200);
+    expect(response.text).toContain('Swagger UI');
+  });
 });
