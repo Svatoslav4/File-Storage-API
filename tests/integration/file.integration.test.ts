@@ -56,7 +56,7 @@ describe('files API integration', () => {
     prismaFile.create.mockResolvedValue(storedFile);
 
     const response = await request(app)
-      .post('/files/upload')
+      .post('/api/files/upload')
       .attach('image', Buffer.from('test'), 'photo.png');
 
     expect(response.status).toBe(201);
@@ -82,7 +82,7 @@ describe('files API integration', () => {
   });
 
   it('rejects an upload without a file', async () => {
-    const response = await request(app).post('/files/upload');
+    const response = await request(app).post('/api/files/upload');
 
     expect(response.status).toBe(400);
     expect(response.body).toEqual({
@@ -94,7 +94,7 @@ describe('files API integration', () => {
   it('lists files returned by the repository', async () => {
     prismaFile.findMany.mockResolvedValue([storedFile]);
 
-    const response = await request(app).get('/files');
+    const response = await request(app).get('/api/files');
 
     expect(response.status).toBe(200);
     expect(response.body).toEqual({
@@ -109,7 +109,7 @@ describe('files API integration', () => {
   it('returns 404 when the requested file does not exist', async () => {
     prismaFile.findUnique.mockResolvedValue(null);
 
-    const response = await request(app).get('/files/missing-file');
+    const response = await request(app).get('/api/files/missing-file');
 
     expect(response.status).toBe(404);
     expect(response.body).toEqual({
@@ -123,7 +123,7 @@ describe('files API integration', () => {
     mockedCloudinaryService.deleteFile.mockResolvedValue({ result: 'ok' });
     prismaFile.delete.mockResolvedValue(storedFile);
 
-    const response = await request(app).delete(`/files/${storedFile.id}`);
+    const response = await request(app).delete(`/api/files/${storedFile.id}`);
 
     expect(response.status).toBe(200);
     expect(response.body).toEqual({
